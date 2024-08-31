@@ -1,7 +1,6 @@
 // Learning Processing
 // Daniel Shiffman
 // http://www.learningprocessing.com
-
 // Example 16-1: Display video
 
 // Step 1. Import the video library
@@ -11,19 +10,27 @@ import processing.video.*;
 Capture video;
 
 void setup() {
-  size(320, 240);
-  println(Capture.list());
-
+  size(640, 480);
+  String[] cameras = Capture.list();
+  if (cameras.length == 0) {
+    println("There are no cameras available for capture.");
+    exit();
+  } else {
+    println("Available cameras:");
+    for (int i = 0; i < cameras.length; i++) {
+      println("camera "+i+" : "+ cameras[i]);
+    }
+  }
   // Step 3. Initialize Capture object via Constructor
   // Use the default camera at 320x240 resolution
-  video = new Capture(this, 320, 240);
+  video = new Capture(this, 640, 480);
   video.start();
 }
 
 // An event for when a new frame is available
 void captureEvent(Capture video) {
-  // Step 4. Read the image from the camera.
-  video.read();
+     // Step 4. Read the image from the camera.
+     video.read();
 }
 
 void draw() {

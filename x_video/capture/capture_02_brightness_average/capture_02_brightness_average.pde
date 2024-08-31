@@ -1,12 +1,10 @@
 // luminosité moyenne
 
 import processing.video.*;
-
-// Variable for capture device
 Capture video;
 
 void setup() {
-  size(320, 240);
+  size(640, 480);
   // Using the default capture device
   video = new Capture(this, width, height);
   video.start();
